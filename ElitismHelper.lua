@@ -6,7 +6,7 @@ local TimerMeleeData = {}
 local CombinedFails = {}
 local FailByAbility = {}
 local activeUser = nil
-local AddonVersion = 0.12
+local AddonVersion = 0.13
 local playerUser = GetUnitName("player", true).."-"..GetRealmName():gsub(" ", "")
 local defaultElitismHelperDBValues = {
 	Loud = true,
@@ -1062,11 +1062,11 @@ function ElitismFrame:CHAT_MSG_ADDON(event,...)
 			end
 		end
 
-		activeUser = activeUserObject[1]
-
 		-- We are in a group but nobody is eligible...
 		if(activeUser == nil) then
 			activeUser = playerUser
+		else
+			activeUser = activeUserObject[1]
 		end
 	else
 		-- print("Unknown message: "..message)
